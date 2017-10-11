@@ -34,15 +34,14 @@ Run the following commands.
 1.  What does `git help` do?
 
     ```
-	
+	`git help` briefly lists useful information such as common commands.
 
     ```
 
 2.  What does `-ag` cause `git help` to do?
 
     ```
-
-
+    The `-ag` causes it to show available subcommands and guides.
 
     ```
 
@@ -68,24 +67,21 @@ Run `git status` before and after each of these commands.
 1.  What kind of information does `git status` report?
 
     ```
-
-
+    It tells you what branch you are on, how your current working tree compares to the remote GitHub repo, and any unstaged or staged modifications to files.
 
     ```
 
 2.  What does `git add names.txt` do?
 
     ```
-
-
+    It begins tracking the file and stages it to be committed in the next commit.
 
     ```
 
 3.  What does `git commit -m "Add our names."` do?
 
     ```
-
-
+    It commits the file into the git directory and thus saves the staged modified files in the version control history, which you can see in `git log`.
 
     ```
 
@@ -105,16 +101,14 @@ Run `git status` before and after each of these commands.
 4.  What does `git add .` do? What do you think `.` means?
 
     ```
-
-
+    It adds all modified unstaged files in the current directory.
 
     ```
 
 5.  What does `git commit` (without -m) do?
 
     ```
-
-
+    It opens vim for you to write a commit message in it instead of just the command line string.
 
     ```
 
@@ -122,16 +116,14 @@ Run `git status` before and after each of these commands.
     good practice) what command would you use?
 
     ```
-
-
+    You would use the `git commit` without `-m` to write a more detailed message, and you can even add a description to the commit by writing it on other subsequent lines in the message.
 
     ```
 
 7.  What does `git log do`?
 
     ```
-
-
+    It shows the history of the last few commits made on the current selected branch.
 
     ```
 
@@ -161,48 +153,45 @@ Run the following commands:
     **Staged**
 
     ```
-
-
+    names.txt
+    This version of the edits in this file (a kind of "snapshot" of the file at time of `add`ing) will be added to the next commit and stored in version control.
 
     ```
 
     **Unstaged**
 
     ```
-
-
+    movies.txt
+    This file has been modified since its last commit, and those changes have not been added to the staging area, and thus will not be saved in version control.
 
     ```
 
     **Untracked**
 
     ```
-
-
+    foods.txt
+    This file is not being tracked nor saved in any modifications made to it, which is usually because it is a new file. Once a version of it is `add`ed to the staging area it will become tracked.
 
     ```
 
 1.  If you run `git commit` what changes will be committed (***DON’T DO IT***)?
 
     ```
-
-
+    The names.txt changes will be committed.
 
     ```
 
 2.  What command do you run to stage changes?
 
     ```
-
-
+    `git add <filename>`
 
     ```
 
 3.  What command do you run to unstage changes?
 
     ```
-
-
+    Either `git commit` to save the changes to version control, or `git reset HEAD <filename>`
 
     ```
 
@@ -214,16 +203,14 @@ Run the following commands:
 1.  What does `git diff` display?
 
     ```
-
-
+    It displays all the differences between all the files in the working directory and the last commit on the current branch.
 
     ```
 
 2.  What does `git diff --cached` display?
 
     ```
-
-
+    It displays all the differences between all the presently staged files and the last commit on the current branch. A synonymous command is `git diff --staged`
 
     ```
 
@@ -232,8 +219,8 @@ Run the following commands:
     confirm they worked.
 
     ```
-
-
+    `git reset names.txt`
+    `git add movies.txt`
 
     ```
 
@@ -242,8 +229,7 @@ Run the following commands:
     going on.
 
     ```
-
-
+    It shows that movies.txt is both staged and unstaged, but this is actually referring to the fact that a certain new "snapshot" of the changes to movies.txt is staged whereas the working directory contains some other modified version of the file.
 
     ```
 
@@ -251,8 +237,7 @@ Run the following commands:
     Explain what you think is going on.
 
     ```
-
-
+    It says that names.txt was deleted, and that the deletion is unstaged. If one were to stage and commit the change, then the version control would record that the file was deleted.
 
     ```
 
@@ -260,8 +245,7 @@ Run the following commands:
     and explain.
 
     ```
-
-
+    It says that there is one staged version of movies.txt, that the other version of movies.txt is deleted and unstaged, and now there is an untracked file last-movies.txt because we effectively created a new file by that name as far as git is concerned.
 
     ```
 
@@ -270,8 +254,9 @@ Run the following commands:
     Execute them.
 
     ```
-
-
+    `git add movies.txt names.txt`
+    `git add foods.txt last-movies.txt`
+    `git commit -m "modified, renamed, and deleted some files"`
 
     ```
 
@@ -279,8 +264,7 @@ Run the following commands:
     same thing. What does it hold?
 
     ```
-
-
+    It holds the version "snapshots" of files that will be recorded into version control in the next commit.
 
     ```
 
@@ -288,8 +272,7 @@ Run the following commands:
     commit?
 
     ```
-
-
+    Because you want to be able to control which changes you want to commit, which is not, in general, every change every time.
 
     ```
 
@@ -307,8 +290,7 @@ Run the following commands:
 1.  What does `git reset --soft ``"HEAD^" `do?
 
     ```
-
-
+    It removes the last commit from version control and puts the changes that were saved in that commit back into the staging area.
 
     ```
 
@@ -324,30 +306,28 @@ Run the following commands:
 1.  What does `git reset --hard ``"HEAD^"`` `do?
 
     ```
-
-
+    It removes the last commit from version control and discards all local changes (in all local working directories) since the commit before that, and it changes the HEAD pointer to refer to that prior commit.
 
     ```
 
 2.  What is the difference between `--hard` and `--soft`?
 
     ```
-
-
+    `--soft` preserves working directory changes and the snapshots saved in the last commit whereas `--hard` discards all commit-recorded and local changes.
 
     ```
 
 3.  What do you think `HEAD` means?
 
     ```
-
+    `HEAD` refers to the commit that is pointed to by a git pointer of that name, it is used to tell which commit you are on and to refer to parts of it.
 
     ```
 
 4.  What do you think `HEAD^` means?
 
     ```
-
+    `HEAD^` means the first parent of the commit that is referenced by `HEAD`, effectively meaning the previous commit back from the `HEAD` commit.
 
     ```
 
